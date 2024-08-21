@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Mascotas" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva mascota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button routerLink="/home">Ir a home</ion-button>
+  <ion-button (click)="volver()">Volver</ion-button>
+
+  <ion-item>
+    <ion-toggle [(ngModel)]="check"  slot="end">checkbox</ion-toggle>
+
+  </ion-item>
+</ion-content>

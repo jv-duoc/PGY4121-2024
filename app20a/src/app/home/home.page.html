@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{titulo}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/nueva">Nuevo</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" [fullscreen]="true">
+  <h1>Bienvenido a mi app</h1>
+  <p>En esta app veremos mis mascotas</p>
+
+  <p>
+    MostrarPerros:{{mostrarPerros}}
+  </p>
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-label>Perros</ion-label>
+      <ion-toggle [(ngModel)]="mostrarPerros" slot="end"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Gatos
+      </ion-label>
+      <ion-toggle [(ngModel)]="mostrarGatos"  slot="end"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list [inset]="true">
+
+    @for(mascota of mascotas; track $index)
+    {
+      @if((mascota.tipo == "Perro" && mostrarPerros) || (mascota.tipo == "Gato" && mostrarGatos)){
+        <ion-item>
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="" [src]="obtenerAvatar(mascota)" />
+          </ion-avatar>
+          <ion-label>{{mascota.nombre}}</ion-label>
+          <ion-note slot="end" [color]="mascota.tipo == 'Perro'? 'primary':'danger'">{{mascota.tipo}}</ion-note>
+        </ion-item>
+      }
+      
+    }
+    
+
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    
+  </ion-toolbar>
+</ion-footer>
