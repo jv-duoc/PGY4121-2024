@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Prueba de animaciones y ngModel
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Usuario
+      </ion-label>
+      <ion-input [(ngModel)]="usuario" slot="end" type="email" placeholder="email@domain.com"></ion-input>
+
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Contraseña
+      </ion-label>
+      <ion-input [(ngModel)]="pass" slot="end" type="password" placeholder="Ingresar"></ion-input>
+
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="ingresar()" expand="block"  color="success">Ingresar</ion-button>
+
+  <img id="capibara" src="https://static.vecteezy.com/system/resources/previews/025/850/841/non_2x/capybara-face-isolated-illustration-ai-generative-png.png" alt="" srcset="">
+</ion-content>
