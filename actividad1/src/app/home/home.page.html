@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Prueba de animaciones y ngModel
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Usuario
+      </ion-label>
+      <ion-input [(ngModel)]="usuario" slot="end" type="text" placeholder="Ingresar usuario"></ion-input>
+
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Contraseña
+      </ion-label>
+      <ion-input [(ngModel)]="pass" slot="end" type="password" placeholder="Ingresar"></ion-input>
+
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="ingresar()" expand="block"  color="success">Ingresar</ion-button>
+
+</ion-content>
