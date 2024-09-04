@@ -32,7 +32,7 @@
 
   <ion-list [inset]="true">
 
-    @for(mascota of mascotas; track $index)
+    @for(mascota of mascotasSrv.mascotas; track $index)
     {
       @if((mascota.tipo == "Perro" && mostrarPerros) || (mascota.tipo == "Gato" && mostrarGatos)){
         <ion-item>
@@ -41,6 +41,7 @@
           </ion-avatar>
           <ion-label>{{mascota.nombre}}</ion-label>
           <ion-note slot="end" [color]="mascota.tipo == 'Perro'? 'primary':'danger'">{{mascota.tipo}}</ion-note>
+          <ion-button slot="end" color="danger" (click)="eliminar(mascota)">Eliminar</ion-button>
         </ion-item>
       }
       

@@ -8,11 +8,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button routerLink="/home">Ir a home</ion-button>
-  <ion-button (click)="volver()">Volver</ion-button>
+  <h1>Tienes {{mascotasSrv.mascotas.length}} mascotas</h1>
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="nombre" label="Nombre" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="foto" label="Foto" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select [(ngModel)]="tipo" label="tipo">
+        <ion-select-option value="Perro">Perro</ion-select-option>
+        <ion-select-option value="Gato">Gato</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  <ion-item>
-    <ion-toggle [(ngModel)]="check"  slot="end">checkbox</ion-toggle>
-
-  </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="crear()">Crear</ion-button>
 </ion-content>
