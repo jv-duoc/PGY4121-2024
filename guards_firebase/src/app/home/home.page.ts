@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AnimationController, NavController, ViewDidEnter, ViewWillEnter } from '@ionic/angular';
 import { LoginService } from '../login.service';
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 
 @Component({
   selector: 'app-home',
@@ -23,14 +24,20 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
   }
 
   //se ejecuta cuando ya se entró a la vista, despues de las animaciones
-  ionViewDidEnter(): void {
+  async ionViewDidEnter() {
     this.usuario = '';
     this.pass = '';
+
+
+    
   }
   
-  ingresar(){
-    this.loginSrv.login(this.usuario,this.pass);
+  async ingresar(){
+    
+
+    await this.loginSrv.login(this.usuario,this.pass);
     this.navController.navigateForward('/bienvenida');
+    console.log('Ingresando');
   }
 
 }

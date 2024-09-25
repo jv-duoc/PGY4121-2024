@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { FirebaseAuthentication, User } from '@capacitor-firebase/authentication';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,18 +8,46 @@ import { Injectable } from '@angular/core';
 export class LoginService {
 
   nombreUsuario = '';
-  logeado:boolean = false;
-  constructor() { }
+  usuarioActual = new BehaviorSubject<User | undefined>(undefined);
 
-  public login(user:string,password:string){
-    //maneja la sesiòn
-    if(user.length > 1 && password == '123'){
-      //guardamos el estado de la sesion
-      this.logeado = true;
-      // y el nombre del usuario
-      this.nombreUsuario = user;
-    }else{
-      throw {};
+  //creamos un metodo que llamares cuando firebase efectivamente se haya cargado
+  cargarFirebase!: () => void;
+
+  //creamos una promesa que se resuelve cuando firebase se haya cargado
+  firebaseCargado = new Promise<void>((resolve)=>{
+    this.cargarFirebase = resolve;
+  });
+
+  constructor() {
+    // Dejamos un escucha al evento de cambio de estado de firebase
+    //cuando firebase inicie la primera vez, este evento se llamará cuando este cargado
+    FirebaseAuthentication.addListener('authStateChange', async (cambio)=>{
+      this.usuarioActual.next(cambio.user!);
+      this.nombreUsuario = cambio.user!.email!;
+      //cuando llamemos este metodo, firebase ya estará cargado y el guard lo sabrá
+      this.cargarFirebase();
+    });
+  }
+
+  public get logeado(){
+    if(this.usuarioActual.value){
+      return true;
     }
+    return false;
+  }
+
+  //propiedad del usuario actual
+  public get usuario(){
+    return this.usuarioActual.value;
+  }
+
+  public async login(user:string,password:string){
+    const login = await FirebaseAuthentication.signInWithEmailAndPassword({
+      email:user,
+      password:password
+    });
+    this.usuarioActual.next(login.user!);
+    this.nombreUsuario = login.user!.email!;
+    console.log(login);
   }
 }

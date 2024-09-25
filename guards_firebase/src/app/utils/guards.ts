@@ -6,6 +6,7 @@ export const authGuard = async () =>{
     const login = inject(LoginService);
     const nav = inject(NavController);
 
+    await login.firebaseCargado;
     if(!login.logeado){
         nav.navigateRoot('/',{replaceUrl:true});
     }
@@ -15,6 +16,7 @@ export const authGuard = async () =>{
 export const guestGuard = async () =>{
     const login = inject(LoginService);
     const nav = inject(NavController);
+    await login.firebaseCargado;
 
     if(login.logeado){
         nav.navigateRoot('/bienvenida',{replaceUrl:true});
