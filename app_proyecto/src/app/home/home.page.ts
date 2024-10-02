@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LoginService } from '../services/login.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,13 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  loginSrv = inject(LoginService);
+  nav = inject(NavController);
   constructor() {}
 
+
+  async logout(){
+    await this.loginSrv.cerrarSesion();
+    this.nav.navigateRoot('/login')
+  }
 }

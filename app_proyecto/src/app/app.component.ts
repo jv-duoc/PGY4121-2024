@@ -10,6 +10,10 @@ import { Capacitor } from '@capacitor/core';
 export class AppComponent {
 
   constructor() {
+    
+  }
+  
+  ngOnInit(){
     this.cargarFirebase();
   }
 

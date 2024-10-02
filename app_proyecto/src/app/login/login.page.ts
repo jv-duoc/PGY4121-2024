@@ -28,7 +28,8 @@ export class LoginPage implements OnInit {
     } catch (error:any) {
       const toast = await this.toastSrv.create({
         message:error.message,
-        duration:3000
+        duration:3000,
+        position:'top'
       });
       console.log(error);
       toast.present();
