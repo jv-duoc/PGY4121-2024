@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">app_proyecto</string>
+    <string name="title_activity_main">app_proyecto</string>
+    <string name="package_name">cl.duoc.miproyecto</string>
+    <string name="custom_url_scheme">cl.duoc.miproyecto</string>
+</resources>
