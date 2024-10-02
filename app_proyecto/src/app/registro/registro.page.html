@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>registro</ion-title>
+    <ion-buttons>
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,8 +15,10 @@
     <ion-item>
       <ion-input [(ngModel)]="password" type="password" label="Contraseña"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="password2" type="password" label="Confirmar contraseña"></ion-input>
+    </ion-item>
   </ion-list>
-  <ion-button expand="block" (click)="ingresar()">Ingresar</ion-button>
+  <ion-button expand="block" (click)="registro()">Crear cuenta</ion-button>
 
-  <ion-button expand="block" routerLink="/registro" >Registro</ion-button>
 </ion-content>

@@ -7,7 +7,7 @@ import { BehaviorSubject, lastValueFrom } from 'rxjs';
 })
 export class LoginService {
 
-  user:User|undefined;
+  user:User|null = null;
 
   //creamos un metodo que llamares cuando firebase efectivamente se haya cargado
   cargarFirebase!: () => void;
@@ -20,15 +20,18 @@ export class LoginService {
   constructor() {
     FirebaseAuthentication.getCurrentUser();
     FirebaseAuthentication.addListener('authStateChange',(status)=>{
-      this.user = this.user;
+      this.user = status.user;
       this.cargarFirebase();
     })
     
   }
 
 
-  async registro(){
-
+  async registro(email:string,password:string){
+    const resultado = await FirebaseAuthentication.createUserWithEmailAndPassword({
+      email,
+      password
+    })
   }
 
   async login(email:string,password:string){
