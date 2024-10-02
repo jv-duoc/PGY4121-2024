@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@capacitor-firebase/authentication": "^6.1.0",
-    "@capacitor/android": "^6.1.2",
-    "firebase": "^10.14.0"
-  }
-}
