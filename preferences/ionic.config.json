@@ -1,0 +1,7 @@
+{
+  "name": "preferences",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
