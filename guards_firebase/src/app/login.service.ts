@@ -23,7 +23,7 @@ export class LoginService {
     //cuando firebase inicie la primera vez, este evento se llamará cuando este cargado
     FirebaseAuthentication.addListener('authStateChange', async (cambio)=>{
       this.usuarioActual.next(cambio.user!);
-      this.nombreUsuario = cambio.user!.email!;
+      this.nombreUsuario = cambio.user?.email?? '';
       //cuando llamemos este metodo, firebase ya estará cargado y el guard lo sabrá
       this.cargarFirebase();
     });
