@@ -10,5 +10,9 @@
   @if(loginSrv.user){
     <h1>Hola {{loginSrv.user.email}}</h1>
   }
+
+  @if(datos){
+    <p>Id unico:{{datos.id}}</p>
+  }
   <ion-button expand="block" (click)="logout()">Cerrar sesión</ion-button>
 </ion-content>
